@@ -1,5 +1,5 @@
 name:                hedis-simple
-version:             0.1.0.0
+version:             0.1.1.0
 synopsis:            A simplified API for hedis
 description:         hedis-simple wraps most hedis commands in an EitherT monad to simplify a lot of the verbose error checking that one would normally have to perform.
 homepage:            http://github.com/sanetracker/hedis-simple
