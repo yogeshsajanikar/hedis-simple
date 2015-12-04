@@ -173,6 +173,7 @@ module Database.Redis.Simple (
 import Control.Applicative
 import Control.Monad.Trans
 import Control.Monad.Trans.Either
+import Control.Monad.Error.Class    
 import Data.ByteString (ByteString)
 import qualified Database.Redis as R
 
@@ -181,7 +182,7 @@ class WrappedRedis m mi r | m -> mi r where
   unwrap :: m a -> mi (r a)
 
 newtype Redis a = Redis { fromRedis :: EitherT R.Reply R.Redis a }
-  deriving (Functor, Applicative, Monad, MonadIO)
+  deriving (Functor, Applicative, Monad, MonadIO, MonadError R.Reply)
 
 newtype RedisTx a = RedisTx { fromRedisTx :: R.RedisTx (R.Queued a) }
 
